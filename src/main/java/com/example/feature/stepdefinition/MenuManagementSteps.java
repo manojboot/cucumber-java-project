@@ -10,7 +10,7 @@ public class MenuManagementSteps {
 	ResturantMenu LocationMenu = new ResturantMenu();
 
 
-@Given("I have menu item with name {string} and price {int}")
+@Given("I have menu item with name \"([^\"]*)\" and price (\\d+)")
 public void i_have_menu_item_with_name_and_price(String newMenuItem, Integer price) {
     // Write code here that turns the phrase above into concrete actions
 	
