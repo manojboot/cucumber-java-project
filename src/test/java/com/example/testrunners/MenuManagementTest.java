@@ -9,6 +9,7 @@ import cucumber.api.junit.Cucumber;
 @CucumberOptions(
 		features="src/test/java/com/example/features",
 		glue = "com.example.feature.stepdefinition",
+		tags = {"not @LoadTest"},
 		plugin = {"pretty"},
 		monochrome = true)
 public class MenuManagementTest {

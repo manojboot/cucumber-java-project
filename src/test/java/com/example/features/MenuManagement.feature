@@ -20,7 +20,20 @@
 
 Feature: Menu Management
 
+@SmokeTest
 Scenario: Add a menu item
 Given I have menu item with name "Aaloo Paratha" and price 30
+When I add that menu item
+Then Menu Item with name "Aaloo Paratha" should be added
+
+@RegularTest
+Scenario: Add another menu item
+Given I have menu item with name "Chicken Tikka" and price 240
+When I add that menu item
+Then Menu Item with name "Aaloo Paratha" should be added
+
+@LoadTest @RegularTest
+Scenario: Add third menu item
+Given I have menu item with name "Hakka Noodles" and price 130
 When I add that menu item
 Then Menu Item with name "Aaloo Paratha" should be added
