@@ -30,10 +30,10 @@ Then Menu Item with name "Aaloo Paratha" should be added
 Scenario: Add another menu item
 Given I have menu item with name "Chicken Tikka" and price 240
 When I add that menu item
-Then Menu Item with name "Aaloo Paratha" should be added
+Then Menu Item with name "Chicken Tikka" should be added
 
 @LoadTest @RegularTest
 Scenario: Add third menu item
 Given I have menu item with name "Hakka Noodles" and price 130
 When I add that menu item
-Then Menu Item with name "Aaloo Paratha" should be added
+Then Menu Item with name "Hakka Noodles" should be added
