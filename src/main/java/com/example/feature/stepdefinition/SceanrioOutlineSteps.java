@@ -2,6 +2,12 @@ package com.example.feature.stepdefinition;
 
 import static org.junit.Assert.assertTrue;
 
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.remote.RemoteWebDriver;
+
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 
@@ -52,7 +58,38 @@ public class SceanrioOutlineSteps {
 	    		System.out.println("Expected Value: " +expectedValue);
 	    		System.out.println("System Calculated Value: " +SystemCalculatedValue);
 	    		assertTrue(expectedValue == SystemCalculatedValue);
+	    		invokeWebPage(expectedValue);
 	}
 
-
+	
+	private void invokeWebPage(Double expectedValue) {
+		
+        System.setProperty("webdriver.chrome.driver", "C://ChromeDriver//chromedriver.exe");
+		
+		WebDriver driver = new ChromeDriver();
+		
+		driver.get("http://localhost:8080/welcome1");
+		
+		WebElement BillAmountTextBox = driver.findElement(By.id("billamount"));
+		
+		WebElement TaxRateTextBox = driver.findElement(By.id("taxrate"));
+		
+		WebElement Button = driver.findElement(By.id("mybutton"));
+		
+		BillAmountTextBox.sendKeys(Integer.toString(InitialBillAmount));
+		
+		TaxRateTextBox.sendKeys(Double.toString(TaxRate));
+		
+		Button.click();
+		
+		WebElement Header1Element = ((RemoteWebDriver) driver).findElementByXPath("//h1");
+		
+		System.out.println(Header1Element.getText());
+		
+		boolean Matched = Header1Element.getText().contains("Final Bill Amount is: $" + expectedValue.toString());
+		
+		System.out.println(Matched);		
+		
+		
+	}
 }
